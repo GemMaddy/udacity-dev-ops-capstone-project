@@ -27,7 +27,7 @@ pipeline {
          stage('Deploying') {
               steps{
                   echo 'Deploying to AWS...'
-                  withAWS(credentials: 'aws', region: 'us-west-2') {
+                  withAWS(credentials: 'aws-static', region: 'us-west-2') {
                       sh "aws eks --region us-west-2 update-kubeconfig --name ridiculous-unicorn-1595428959"
                       sh "kubectl config use-context arn:aws:eks:us-east-2:263546620847:cluster/ridiculous-unicorn-1595428959"
                       sh "kubectl set image deployments/capstone-project-cloud-devops capstone-project-cloud-devops=mechx/capstone-project-cloud-devops"
